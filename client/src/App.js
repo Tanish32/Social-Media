@@ -7,7 +7,6 @@ import { useSelector } from "react-redux"
 import { CssBaseline, ThemeProvider } from "@mui/material"
 import { createTheme } from "@mui/material"
 import { themeSettings } from "theme"
-import Navbar from "scenes/navbar"
 function App() {
 	const mode = useSelector((state) => state.mode)
 	const theme = useMemo(() => createTheme(themeSettings(mode)), [mode])
@@ -22,8 +21,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/home" element={<HomePage />} />
-						<Route path="/navbar" element={<Navbar />} />
-						// For Now
+
 						<Route
 							path="/profile/:userId"
 							element={<ProfilePage />}

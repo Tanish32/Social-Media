@@ -34,18 +34,18 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")))
 
 /* FILE STORAGE*/
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/assets")
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  },
+	destination: function (req, file, cb) {
+		cb(null, "public/assets")
+	},
+	filename: function (req, file, cb) {
+		cb(null, file.originalname)
+	},
 })
 const upload = multer({ storage })
 
 /** ROUTES WITH FILES */
 app.post("/auth/register", upload.single("picture"), register)
-app.post("/posts", verifyToken, upload.single("picture"), createPost) //how are we configuring the http message to make sure that the image is sent with picture param?
+app.post("/posts", verifyToken, upload.single("picture"), createPost) //the payload object has key picture(part of client code) this picture is then stored in public/assets of server
 
 /** ROUTES */
 app.use("/auth", authRoutes)
@@ -55,11 +55,11 @@ app.use("/posts", postRoutes)
 /**MONGOOSE SETUP*/
 const PORT = process.env.PORT || 6001
 mongoose
-  .connect(process.env.MONGO_URL, {})
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
-    /**ADD DATA ONE TIME */
-    // User.insertMany(users) Keep these commented as we dont want the same users to be uploaded to the persistant data base every time we run the code
-    // Post.insertMany(posts)
-  })
-  .catch((error) => console.log(`${error} did not connect`))
+	.connect(process.env.MONGO_URL, {})
+	.then(() => {
+		app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
+		/**ADD DATA ONE TIME */
+		// User.insertMany(users) Keep these commented as we dont want the same users to be uploaded to the persistant data base every time we run the code
+		// Post.insertMany(posts)
+	})
+	.catch((error) => console.log(`${error} did not connect`))

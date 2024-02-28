@@ -1,4 +1,5 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+
 const UserSchema = new mongoose.Schema(
   {
     firstName: {
@@ -22,7 +23,7 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      min: 0,
+      min: 5,
     },
     picturePath: {
       type: String,
@@ -38,19 +39,7 @@ const UserSchema = new mongoose.Schema(
     impressions: Number,
   },
   { timestamps: true }
-)
+);
 
-const User = mongoose.model("User", UserSchema)
-export default User
-
-//module
-// export default {
-//   object1,
-//   object2
-// };
-
-//commonjs
-// module.exports = {
-//   object1,
-//   object2
-// };
+const User = mongoose.model("User", UserSchema);
+export default User;

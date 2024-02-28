@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const userIds = [
   new mongoose.Types.ObjectId(),
@@ -9,7 +9,7 @@ const userIds = [
   new mongoose.Types.ObjectId(),
   new mongoose.Types.ObjectId(),
   new mongoose.Types.ObjectId(),
-]
+];
 
 export const users = [
   {
@@ -140,7 +140,7 @@ export const users = [
     updatedAt: 1359322268,
     __v: 0,
   },
-]
+];
 
 export const posts = [
   {
@@ -282,4 +282,4 @@ export const posts = [
       "Michael, stop it.",
     ],
   },
-]
+];
